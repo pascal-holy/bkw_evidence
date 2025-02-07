@@ -10,7 +10,7 @@ Anzahl aller registrierten Balkonkraftwerke
 ```sql solar_dates
   select
       reg_date
-  from memory.bkw.einheitensolar
+  from md.einheitensolar
   group by 1
 ```
 
@@ -25,7 +25,7 @@ From {inputs.date_range_name.start} to {inputs.date_range_name.end}
 ```sql solar
   select
       extract(week from reg_date) as kw, EinheitBetriebsstatus as status, count(*) as count
-  from memory.bkw.einheitensolar
+  from md.einheitensolar
   where reg_date between '${inputs.date_range_name.start}' and '${inputs.date_range_name.end}'
   group by 1,2
   order by 1
@@ -42,7 +42,7 @@ From {inputs.date_range_name.start} to {inputs.date_range_name.end}
 ```sql solar_map
   select
       Postleitzahl as plz, count(*) as count
-  from memory.bkw.einheitensolar
+  from md.einheitensolar
   group by 1
   order by 1
 ```
