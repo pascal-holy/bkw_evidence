@@ -2,10 +2,6 @@ appearance:
   default: system
   switcher: true
 
-# evidence.config.yaml
-deployment:
-  basePath: /bkw_evidence
-
 theme:
   colorPalettes:
     default:
