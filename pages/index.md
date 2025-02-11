@@ -24,19 +24,19 @@ From {inputs.date_range_name.start} to {inputs.date_range_name.end}
 
 ```sql solar
   select
-      extract(week from reg_date) as kw, EinheitBetriebsstatus as status, count(*) as count
+      date_trunc('month', reg_date) as month, bezirk1, count(*) as count
   from md.einheitensolar
   where reg_date between '${inputs.date_range_name.start}' and '${inputs.date_range_name.end}'
   group by 1,2
-  order by 1
+  order by 1,2
 ```
 
 <BarChart 
     data={solar}
-    x=kw
+    x=month
     y=count
-    title="BKW pro Kalenderwoche"
-    series=status
+    series=bezirk1
+    title="BKW pro Monat"
 />
 
 ```sql solar_map
@@ -55,6 +55,6 @@ From {inputs.date_range_name.start} to {inputs.date_range_name.end}
     value=count
     height=400
     opacity=0.5
-    colorPalette={['#F3F9A7', '#CAC531']}
+    colorPalette={['#DFDFDF', '#FFED00']}
 />
 
