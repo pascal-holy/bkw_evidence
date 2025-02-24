@@ -7,6 +7,16 @@ title: Balkonkraftwerke in Berlin
 Anzahl aller registrierten Balkonkraftwerke
 </Details>
 
+```sql total
+select count(*) as total from md.einheitensolar
+```
+<BigValue 
+  data={total} 
+  value=total
+  fmt=num1k
+/>
+
+
 ```sql solar_dates
   select
       reg_date
@@ -54,7 +64,7 @@ From {inputs.date_range_name.start} to {inputs.date_range_name.end}
     geoId=plz
     value=count
     height=400
-    opacity=0.5
-    colorPalette={['#DFDFDF', '#FFED00']}
+    opacity=0.8
+    colorPalette={['#DFDFDF', '#FFEF00']}
 />
 
