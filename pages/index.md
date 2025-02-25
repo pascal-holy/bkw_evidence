@@ -17,6 +17,7 @@ Es gibt schon <Value data={total} column=total fmt=id /> Balkonkraftwerke in Ber
   select
       reg_date
   from md.einheitensolar
+  where reg_date > '2022-01-01'
   group by 1
 ```
 
