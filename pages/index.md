@@ -10,11 +10,7 @@ Anzahl aller registrierten Balkonkraftwerke
 ```sql total
 select count(*) as total from md.einheitensolar
 ```
-<BigValue 
-  data={total} 
-  value=total
-  fmt=num1k
-/>
+Es gibt schon <Value data={total} column=total fmt=id /> Balkonkraftwerke in Berlin.
 
 
 ```sql solar_dates
