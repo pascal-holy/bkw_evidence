@@ -5,7 +5,7 @@ title: Balkonkraftwerke im Markstammdatenregister
 ```sql total
 select count(*) as total from md.einheitensolar
 ```
-Es gibt schon <Value data={total} column=total fmt=id /> Balkonkraftwerke in Berlin.
+Es gibt <Value data={total} column=total fmt=id /> Balkonkraftwerke in Berlin.
 
 ```sql brutto
 WITH monthly AS (
