@@ -1,4 +1,10 @@
 {
   "version": "1.0",
-  "customFormats": []
+  "customFormats": [
+    {
+      "formatTag": "watt",
+      "formatCode": "[<1000]0\" W\";[<1000000]0.0,\" kW\";0.00,, \" MW\"",
+      "valueType": "number"
+    }
+  ]
 }
