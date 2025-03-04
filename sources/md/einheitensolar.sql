@@ -7,4 +7,4 @@ select
     nettonennleistung,
     updated_at
 from main.mast e
-left join main.plz_berlin_new p on e.Plz = p.PLZ
+left join main.plz_berlin_final p on e.Plz = p.PLZ
