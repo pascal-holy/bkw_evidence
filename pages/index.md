@@ -119,3 +119,10 @@ From {inputs.date_range_name.start} to {inputs.date_range_name.end}
     colorPalette={['#DFDFDF', '#FFEF00']}
 />
 
+```sql last_update
+select updated_at
+from md.einheitensolar
+limit 1
+```
+
+Letztes Update: <Value data={last_update} column=updated_at /> 
