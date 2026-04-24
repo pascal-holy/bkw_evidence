@@ -32,7 +32,7 @@ limit_last_2 AS (
   LIMIT 2
 ),
 pct as (
-  SELECT 
+  SELECT  
       MAX(CASE WHEN rn = 1 THEN nettonennleistung END) AS nettoleistung,
       MAX(CASE WHEN rn = 2 THEN nettonennleistung END) AS nettonennleistung_vorletzter_monat,
       MAX(CASE WHEN rn = 1 THEN bruttoleistung END) AS bruttoleistung,
@@ -126,3 +126,4 @@ limit 1
 ```
 
 Letztes Update: <Value data={last_update} column=updated_at /> 
+  

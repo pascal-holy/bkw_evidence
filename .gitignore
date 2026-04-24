@@ -10,3 +10,4 @@ static/data
 .evidence/meta
 sources/bkw/bkw.duckdb
 
+sources/md/connection.options.yaml
