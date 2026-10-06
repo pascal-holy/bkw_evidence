@@ -11,3 +11,5 @@ static/data
 sources/bkw/bkw.duckdb
 
 sources/md/connection.options.yaml
+
+connection.yaml
