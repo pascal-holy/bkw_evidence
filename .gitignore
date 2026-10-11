@@ -7,9 +7,13 @@ static/data
 *.options.yaml
 .vscode/settings.json
 .env
+.bruin.yml
 .evidence/meta
 sources/bkw/bkw.duckdb
 
 sources/md/connection.options.yaml
 
 connection.yaml
+
+logs/runs
+logs/queries

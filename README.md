@@ -1,5 +1,13 @@
 # Evidence Template Project
 
+## Berlin solar data pipeline
+
+The dashboard reads data prepared by the Bruin pipeline in
+[`pipelines/berlin-solar`](pipelines/berlin-solar/README.md). Run this pipeline
+before refreshing Evidence sources. It produces Berlin registration data plus
+monthly and postcode summaries, with data quality checks and a daily schedule
+for deployment to an orchestrator.
+
 ## Using Codespaces
 
 If you are using this template in Codespaces, click the `Start Evidence` button in the bottom status bar. This will install dependencies and open a preview of your project in your browser - you should get a popup prompting you to open in browser.

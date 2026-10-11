@@ -1,0 +1,13 @@
+name: berlin-solar
+schedule: "@daily"
+start_date: "2026-10-11"
+catchup: false
+retries: 2
+concurrency: 1
+
+default_connections:
+  duckdb: md
+
+tags:
+  - solar
+  - berlin
