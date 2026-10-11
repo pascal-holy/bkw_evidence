@@ -5,7 +5,7 @@ title: Balkonkraftwerke im Markstammdatenregister
 # Balkonkraftwerke im Markstammdatenregister
 
 ```sql total
-select count(*) as total from {{ /queries/md/einheitensolar }}
+select count(*) as total from {{ /sources/md/einheitensolar }}
 ```
 Es gibt {% value data="total" value="sum(total)" fmt="id" /%} Balkonkraftwerke in Berlin.
 
@@ -14,38 +14,38 @@ Es gibt {% value data="total" value="sum(total)" fmt="id" /%} Balkonkraftwerke i
 Zeitraum: {{ date_range_name.range }}
 
 {% big_value
-    data={{ /queries/md/einheitensolar }}
-    value="sum(bruttoleistung)"
-    title="Bruttoleistung"
-    fmt="[<1000]0\" W\";[<1000000]0.0,\" kW\";0.00,\" MW\""
+    data="/sources/md/einheitensolar"
+    value="sum(bruttoleistung)/1000"
+    title="Bruttoleistung (kW)"
+    fmt="num0"
     filters=["date_range_name"]
     comparison={ compare_vs="prior period" text="zum Vormonat" }
 /%}
 
 {% big_value
-    data={{ /queries/md/einheitensolar }}
-    value="sum(nettonennleistung)"
-    title="Nettonennleistung"
-    fmt="[<1000]0\" W\";[<1000000]0.0,\" kW\";0.00,\" MW\""
+    data="/sources/md/einheitensolar"
+    value="sum(nettonennleistung)/1000"
+    title="Nettonennleistung (kW)"
+    fmt="num0"
     filters=["date_range_name"]
     comparison={ compare_vs="prior period" text="zum Vormonat" }
 /%}
 
 ```sql solar
   select
-      date_trunc('month', reg_date) as month, bezirk1, count(*) as count
-  from {{ /queries/md/einheitensolar }}
+      date_trunc('month', reg_date) as month, count(*) as count
+  from {{ /sources/md/einheitensolar }}
   where {{ date_range_name.filter }}
-  group by 1,2
-  order by 1,2
+  group by 1
+  order by 1
 ```
 
-{% bar_chart data="solar" x="month" y="sum(count)" series="bezirk1" title="Registrierungen pro Monat nach Bezirk" /%}
+
 
 ```sql solar_map
   select
       Plz as plz, count(*) as count
-  from {{ /queries/md/einheitensolar }}
+  from {{ /sources/md/einheitensolar }}
   group by 1
   order by 1
 ```
@@ -54,7 +54,7 @@ Zeitraum: {{ date_range_name.range }}
     {% area_layer
         data="solar_map"
         area_id="plz"
-        geojson_url="plz.geojson"
+        geojson_url="https://tsb-opendata.s3.eu-central-1.amazonaws.com/plz/plz.geojson"
         geojson_id="plz"
         value="sum(count)"
         color_scale=["#DFDFDF", "#FFEF00"]
@@ -63,7 +63,7 @@ Zeitraum: {{ date_range_name.range }}
 
 ```sql last_update
 select max(updated_at) as updated_at
-from {{ /queries/md/einheitensolar }}
+from {{ /sources/md/einheitensolar }}
 ```
 
 Letztes Update: {% value data="last_update" value="max(updated_at)" fmt="fulldate" /%}
